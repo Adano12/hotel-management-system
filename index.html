@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kestrel Hotel | Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">Kestrel</div>
+      <nav>
+        <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+        <button class="nav-btn" data-view="rooms">Rooms</button>
+        <button class="nav-btn" data-view="bookings">Bookings</button>
+        <button class="nav-btn" data-view="guests">Guests</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="avatar">FD</div>
+        <div><strong>Front desk</strong><small>Signed in</small></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="viewTitle">Dashboard</h1>
+          <p id="todayLabel"></p>
+        </div>
+        <div class="actions">
+          <input id="search" type="search" placeholder="Search guests or rooms" aria-label="Search">
+          <button id="newBooking" class="btn primary">New booking</button>
+        </div>
+      </header>
+
+      <section id="view-dashboard" class="view active">
+        <div class="stats" id="stats"></div>
+        <div class="panel">
+          <h2>Room status</h2>
+          <div class="statusbar" id="statusbar"></div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="panel">
+          <h2>Latest bookings</h2>
+          <div class="table-wrap" id="dashTable"></div>
+        </div>
+      </section>
+
+      <section id="view-rooms" class="view">
+        <div class="chips" id="roomFilters"></div>
+        <div class="room-grid" id="roomGrid"></div>
+      </section>
+
+      <section id="view-bookings" class="view">
+        <div class="panel"><div class="table-wrap" id="bookingTable"></div></div>
+      </section>
+
+      <section id="view-guests" class="view">
+        <div class="panel"><div class="table-wrap" id="guestTable"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <form class="modal-card" id="bookingForm">
+      <h2>New booking</h2>
+      <label>Guest name
+        <input name="guest" required placeholder="Full name">
+      </label>
+      <label>Phone
+        <input name="phone" type="tel" placeholder="Optional">
+      </label>
+      <div class="row">
+        <label>Check-in <input name="checkIn" id="checkIn" type="date" required></label>
+        <label>Check-out <input name="checkOut" id="checkOut" type="date" required></label>
+      </div>
+      <label>Room
+        <select name="room" id="roomSelect" required></select>
+      </label>
+      <p class="total" id="totalLabel"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="cancelModal">Cancel</button>
+        <button type="submit" class="btn primary">Save booking</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="index.js"></script>
+</body>
+</html>
